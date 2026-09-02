@@ -1,0 +1,798 @@
+import { IMG } from './images.js'
+
+/**
+ * Product catalogue.
+ * `build()` fills in the fields that are identical across a family so each
+ * entry below stays readable and only carries what actually differs.
+ */
+const build = (base) => ({
+  brand: 'ARVÉRA Signature',
+  availability: 'In Stock',
+  rating: 4.7,
+  reviews: 64,
+  isNew: false,
+  bestseller: false,
+  featured: false,
+  care: [
+    'Wipe with a soft, damp cloth and a mild pH-neutral cleaner.',
+    'Avoid abrasive scrubs, steel wool and solvent-based thinners.',
+    'Dry immediately after cleaning to preserve the surface sheen.',
+    'Do not place cookware directly off the flame on the surface.',
+  ],
+  ...base,
+  discount: Math.round(((base.mrp - base.price) / base.mrp) * 100),
+})
+
+/* ------------------------------------------------------------------ */
+/* LAMINATES — 12                                                      */
+/* ------------------------------------------------------------------ */
+const laminates = [
+  {
+    id: 'sc-435',
+    code: 'SC 435',
+    name: 'Natural Walnut',
+    price: 2480,
+    mrp: 3150,
+    finish: 'Suede Matt',
+    color: 'Walnut Brown',
+    collection: 'Dark Walnut',
+    images: [IMG.panelWood, IMG.corridorWood, IMG.livingSlat],
+    bestseller: true,
+    featured: true,
+    rating: 4.9,
+    reviews: 212,
+    description:
+      'A deep, open-grained walnut reproduced from a single European board, so the cathedral figure runs true across a full 8 × 4 sheet. The suede matt finish absorbs light rather than bouncing it, which keeps large shutter runs calm and hides everyday fingerprints.',
+  },
+  {
+    id: 'sc-418',
+    code: 'SC 418',
+    name: 'Calacatta Stone',
+    price: 3120,
+    mrp: 3990,
+    finish: 'High Gloss',
+    color: 'Ivory White',
+    collection: 'Italian Marble',
+    images: [IMG.bathStone, IMG.kitchenMarble, IMG.arches],
+    bestseller: true,
+    featured: true,
+    rating: 4.8,
+    reviews: 176,
+    description:
+      'Calacatta veining scanned at 600 dpi from a quarried Tuscan slab, then printed with a warm grey undertone so it reads as stone and not as print. The mirror-gloss surface is best used on islands, dado backs and vertical feature panels.',
+  },
+  {
+    id: 'sc-402',
+    code: 'SC 402',
+    name: 'Urban Concrete',
+    price: 2190,
+    mrp: 2790,
+    finish: 'Micro Texture',
+    color: 'Concrete Grey',
+    collection: 'Soft Concrete',
+    images: [IMG.concreteRoom, IMG.plasterWall, IMG.livingGrey],
+    bestseller: true,
+    rating: 4.7,
+    reviews: 148,
+    description:
+      'Hand-trowelled cement, captured with its trowel drag and mineral blooms intact. The micro-textured emboss follows the print, so the surface feels faintly gritty under the hand the way a real render does.',
+  },
+  {
+    id: 'sc-509',
+    code: 'SC 509',
+    name: 'Smoked Oak',
+    price: 2340,
+    mrp: 2980,
+    finish: 'Natural Wood',
+    color: 'Oak Beige',
+    collection: 'Natural Oak',
+    images: [IMG.shelfWood, IMG.livingShelf, IMG.loungeWood],
+    bestseller: true,
+    featured: true,
+    rating: 4.8,
+    reviews: 194,
+    description:
+      'European oak taken through a smoke-and-lime treatment before scanning, giving it a grey-warm cast that sits comfortably against both brass and blackened steel. A registered emboss means the texture lands exactly on the grain.',
+  },
+  {
+    id: 'sc-505',
+    code: 'SC 505',
+    name: 'Sandstone',
+    price: 1980,
+    mrp: 2560,
+    finish: 'Honed Matt',
+    color: 'Sandstone',
+    collection: 'Mineral Stone',
+    images: [IMG.panelBeige, IMG.potsStone, IMG.corridorWood],
+    bestseller: true,
+    rating: 4.6,
+    reviews: 121,
+    description:
+      'A quiet, buff-toned stone with almost no directional grain — the surface to reach for when the joinery should recede and the room should speak. Honed matt keeps reflections diffuse under downlights.',
+  },
+  {
+    id: 'sc-508',
+    code: 'SC 508',
+    name: 'Graphite Wood',
+    price: 2620,
+    mrp: 3340,
+    finish: 'Suede Matt',
+    color: 'Graphite',
+    collection: 'Metallic Textures',
+    images: [IMG.surfaceBlack, IMG.sideboardWood, IMG.facadeDark],
+    bestseller: true,
+    featured: true,
+    rating: 4.9,
+    reviews: 158,
+    description:
+      'Near-black timber with a fine silver fleck worked into the grain, so the panel shifts from flat charcoal to a soft metallic depending on where you stand. Anti-fingerprint coated as standard.',
+  },
+  {
+    id: 'sc-512',
+    code: 'SC 512',
+    name: 'Linen White',
+    price: 1720,
+    mrp: 2240,
+    finish: 'Silk Touch',
+    color: 'Off White',
+    collection: 'Soft Concrete',
+    images: [IMG.benchMinimal, IMG.minimalPlant, IMG.livingWhite],
+    isNew: true,
+    rating: 4.7,
+    reviews: 88,
+    description:
+      'A warm white with a woven linen emboss — the texture is fine enough to read as fabric from a metre away and as a clean solid from across the room. Ideal for full-height wardrobe shutters.',
+  },
+  {
+    id: 'sc-521',
+    code: 'SC 521',
+    name: 'Terra Oak',
+    price: 2410,
+    mrp: 3080,
+    finish: 'Natural Wood',
+    color: 'Terracotta Brown',
+    collection: 'Natural Oak',
+    images: [IMG.corridorWood, IMG.loungeWood, IMG.livingSlat],
+    isNew: true,
+    featured: true,
+    rating: 4.8,
+    reviews: 96,
+    description:
+      'A red-warm oak with a rustic knot pattern, drawn from reclaimed barn timber. It carries a room on its own, so it is usually paired with a plain solid on the opposite run.',
+  },
+  {
+    id: 'sc-530',
+    code: 'SC 530',
+    name: 'Nordic Ash',
+    price: 2180,
+    mrp: 2790,
+    finish: 'Suede Matt',
+    color: 'Pale Grey',
+    collection: 'Natural Oak',
+    images: [IMG.minimalPlant, IMG.hallwayWhite, IMG.livingWhite],
+    rating: 4.6,
+    reviews: 74,
+    description:
+      'Pale Scandinavian ash with a tight, straight grain and almost no colour variation between sheets — the safest choice on large-volume projects where batch matching matters.',
+  },
+  {
+    id: 'sc-544',
+    code: 'SC 544',
+    name: 'Verde Marble',
+    price: 3340,
+    mrp: 4290,
+    finish: 'High Gloss',
+    color: 'Deep Green',
+    collection: 'Italian Marble',
+    images: [IMG.livingGreen, IMG.bedroomGreen, IMG.officeGreen],
+    isNew: true,
+    featured: true,
+    availability: 'Made to Order',
+    rating: 4.9,
+    reviews: 67,
+    description:
+      'Verde Alpi veining in deep forest green cut through with white and gold. A statement surface for bar backs, powder rooms and reception desks — used sparingly, it lifts an entire scheme.',
+  },
+  {
+    id: 'sc-556',
+    code: 'SC 556',
+    name: 'Charcoal Slate',
+    price: 2540,
+    mrp: 3250,
+    finish: 'Micro Texture',
+    color: 'Charcoal',
+    collection: 'Mineral Stone',
+    images: [IMG.facadeDark, IMG.bedroomDark, IMG.surfaceBlack],
+    rating: 4.7,
+    reviews: 82,
+    description:
+      'Riven slate with a cleft texture you can feel across the panel. Heat and stain resistant enough for a working kitchen, and dark enough to make brass hardware read as jewellery.',
+  },
+  {
+    id: 'sc-561',
+    code: 'SC 561',
+    name: 'Brushed Bronze',
+    price: 3680,
+    mrp: 4720,
+    finish: 'Brushed Metal',
+    color: 'Bronze',
+    collection: 'Metallic Textures',
+    images: [IMG.vasesDark, IMG.barDark, IMG.lounge],
+    isNew: true,
+    availability: 'Made to Order',
+    rating: 4.8,
+    reviews: 54,
+    description:
+      'A directional brushed bronze with a genuine metal foil layer beneath the overlay, so the sheen travels as you walk past. Specified most often on island facings and lift lobby panelling.',
+  },
+].map((p) =>
+  build({
+    category: 'Laminates',
+    material: 'Decorative High-Pressure Laminate',
+    thickness: '1.0 mm',
+    size: '8 ft × 4 ft (2440 × 1220 mm)',
+    unit: 'per sheet',
+    applications: [
+      'Kitchen shutters and island facings',
+      'Wardrobe and storage shutters',
+      'TV units, consoles and wall panelling',
+      'Office desking, reception and retail fixtures',
+    ],
+    specs: {
+      'Product Code': p.code,
+      Category: 'Decorative Laminate',
+      Finish: p.finish,
+      Thickness: '1.0 mm',
+      'Sheet Size': '2440 × 1220 mm',
+      Grade: 'HGS — Horizontal General Purpose',
+      Core: 'Kraft paper, phenolic bonded',
+      'Surface Coating': 'Melamine, anti-fingerprint',
+      'Scratch Resistance': 'Class 3 (EN 438)',
+      'Boiling Water Resistance': 'Pass — EN 438-2:12',
+      'Fire Rating': 'Class B (BS 476 Part 7)',
+      Warranty: '10 Years',
+    },
+    ...p,
+  })
+)
+
+/* ------------------------------------------------------------------ */
+/* PLYWOOD & MDF — 5                                                   */
+/* ------------------------------------------------------------------ */
+const boards = [
+  {
+    id: 'ply-710',
+    code: 'ARV 710',
+    name: 'Marine BWP Plywood',
+    category: 'Plywood',
+    price: 4890,
+    mrp: 6100,
+    finish: 'Natural Wood',
+    color: 'Natural',
+    material: 'Gurjan Hardwood Core',
+    thickness: '19 mm',
+    images: [IMG.shelfWood, IMG.corridorWood, IMG.drill],
+    bestseller: true,
+    featured: true,
+    rating: 4.9,
+    reviews: 143,
+    description:
+      'A full gurjan face-and-core board bonded with 100% phenol formaldehyde resin to IS 710. It survives a 72-hour boiling water cycle without delamination, which is why it is the default under every kitchen and bathroom vanity we specify.',
+    specs: {
+      Standard: 'IS 710 — BWP Grade',
+      Core: '100% Gurjan hardwood, calibrated',
+      Bonding: 'Phenol Formaldehyde (PF) resin',
+      'Boiling Water Test': '72 hours — Pass',
+      Treatment: 'Borer & termite treated',
+      Density: '680–720 kg/m³',
+      'Moisture Content': '8–10%',
+      Warranty: 'Lifetime',
+    },
+  },
+  {
+    id: 'ply-303',
+    code: 'ARV 303',
+    name: 'Gold BWR Plywood',
+    category: 'Plywood',
+    price: 3420,
+    mrp: 4350,
+    finish: 'Natural Wood',
+    color: 'Natural',
+    material: 'Hardwood Core',
+    thickness: '18 mm',
+    images: [IMG.woodPlank, IMG.loungeWood, IMG.shelfWood],
+    bestseller: true,
+    rating: 4.7,
+    reviews: 118,
+    description:
+      'The everyday workhorse for wardrobes, beds and dry-area joinery. Boiling-water-resistant bonding, a void-free hardwood core and a sanded face flat enough to take a 0.8 mm laminate without telegraphing.',
+    specs: {
+      Standard: 'IS 303 — BWR Grade',
+      Core: 'Hardwood, void free',
+      Bonding: 'Melamine Urea Formaldehyde',
+      'Boiling Water Test': '8 hours — Pass',
+      Treatment: 'Borer & termite treated',
+      Density: '620–660 kg/m³',
+      'Moisture Content': '8–12%',
+      Warranty: '25 Years',
+    },
+  },
+  {
+    id: 'mdf-hd',
+    code: 'ARV HDHMR',
+    name: 'HDHMR Board',
+    category: 'MDF',
+    price: 2740,
+    mrp: 3480,
+    finish: 'Honed Matt',
+    color: 'Natural',
+    material: 'High Density Moisture Resistant Fibre',
+    thickness: '18 mm',
+    images: [IMG.panelBeige, IMG.plasterWall, IMG.desk],
+    featured: true,
+    rating: 4.6,
+    reviews: 92,
+    description:
+      'A dense, homogeneous board that routes to a clean edge without chipping — the right substrate for profile shutters, louvres, CNC jaali and anything that gets a PU finish.',
+    specs: {
+      Standard: 'IS 12406 — Exterior Grade',
+      Composition: 'Hardwood fibre, MR resin bonded',
+      Density: '850–900 kg/m³',
+      'Screw Holding (face)': '2,200 N',
+      'Swelling (24h)': '< 8%',
+      Machinability: 'CNC / router grade',
+      Finish: 'Sanded both faces, 120 grit',
+      Warranty: '10 Years',
+    },
+  },
+  {
+    id: 'ply-flexi',
+    code: 'ARV FLEXI',
+    name: 'Flexible Bending Ply',
+    category: 'Plywood',
+    price: 2260,
+    mrp: 2890,
+    finish: 'Natural Wood',
+    color: 'Natural',
+    material: 'Poplar Core',
+    thickness: '8 mm',
+    images: [IMG.loungeWood, IMG.arches, IMG.stairWood],
+    isNew: true,
+    availability: 'Made to Order',
+    rating: 4.5,
+    reviews: 41,
+    description:
+      'A cross-grain poplar board that takes a 300 mm radius cold, without steaming or kerfing. Built for curved reception desks, barrel ceilings and radiused island ends.',
+    specs: {
+      Standard: 'IS 303 — MR Grade',
+      Core: 'Poplar, cross-oriented',
+      'Minimum Bend Radius': '300 mm (cold)',
+      Direction: 'Long grain / short grain available',
+      Bonding: 'Urea Formaldehyde',
+      Density: '480–520 kg/m³',
+      'Sheet Size': '2440 × 1220 mm',
+      Warranty: '5 Years',
+    },
+  },
+  {
+    id: 'ply-fr',
+    code: 'ARV FR',
+    name: 'Fire Retardant Plywood',
+    category: 'Plywood',
+    price: 5640,
+    mrp: 7100,
+    finish: 'Natural Wood',
+    color: 'Natural',
+    material: 'Hardwood Core',
+    thickness: '19 mm',
+    images: [IMG.facadeDark, IMG.officeLoft, IMG.woodPlank],
+    rating: 4.8,
+    reviews: 37,
+    description:
+      'Chemically impregnated through the full section rather than surface coated, so a cut edge is as protected as the face. Mandatory on most commercial fit-outs and high-rise interiors.',
+    specs: {
+      Standard: 'IS 5509 — Fire Retardant',
+      'Flame Penetration': '> 30 minutes',
+      'Rate of Heat Release': '< 30 kW/m²',
+      'Flame Spread Index': 'Class 1 (BS 476 Part 7)',
+      Core: 'Hardwood, FR impregnated',
+      Bonding: 'Phenol Formaldehyde',
+      Density: '700–740 kg/m³',
+      Warranty: 'Lifetime',
+    },
+  },
+].map((p) =>
+  build({
+    brand: 'ARVÉRA Pro',
+    collection: 'Structure',
+    unit: 'per sheet',
+    size: '8 ft × 4 ft (2440 × 1220 mm)',
+    applications: [
+      'Kitchen and vanity carcass construction',
+      'Wardrobe and storage carcasses',
+      'Shelving, beds and loose furniture',
+      'Commercial fit-out joinery',
+    ],
+    care: [
+      'Store flat on a level surface, away from direct ground contact.',
+      'Seal all cut edges before installation in wet areas.',
+      'Keep sheets covered and dry until the day of fabrication.',
+      'Allow 48 hours of site acclimatisation before cutting.',
+    ],
+    ...p,
+  })
+)
+
+/* ------------------------------------------------------------------ */
+/* HARDWARE — 8                                                        */
+/* ------------------------------------------------------------------ */
+const hardware = [
+  {
+    id: 'hw-hinge',
+    code: 'VK 110',
+    name: 'Soft Close Hinge',
+    price: 289,
+    mrp: 420,
+    unit: 'per piece',
+    finish: 'Brushed Metal',
+    color: 'Nickel',
+    material: 'Cold Rolled Steel',
+    thickness: '35 mm cup',
+    images: [IMG.drawerUnit, IMG.kitchenDetail, IMG.bathStone],
+    bestseller: true,
+    featured: true,
+    rating: 4.8,
+    reviews: 486,
+    description:
+      'A clip-on 110° hinge with the damper built into the arm rather than bolted on, so it keeps working after the shutter has been removed and rehung. Three-way adjustment lets you square a door on site in under a minute.',
+    specs: {
+      'Opening Angle': '110°',
+      'Cup Diameter': '35 mm',
+      Damping: 'Integrated hydraulic soft close',
+      Adjustment: '3-way (height / depth / side)',
+      'Cycle Test': '80,000 cycles',
+      Mounting: 'Clip-on, tool free',
+      Finish: 'Nickel plated',
+      Warranty: '10 Years',
+    },
+    applications: [
+      'Kitchen base and wall unit shutters',
+      'Wardrobe hinged shutters',
+      'Vanity and storage cabinets',
+      'Office pedestal doors',
+    ],
+  },
+  {
+    id: 'hw-tandem',
+    code: 'VK 550',
+    name: 'Tandem Drawer System',
+    price: 3980,
+    mrp: 5400,
+    unit: 'per set',
+    finish: 'Brushed Metal',
+    color: 'Graphite',
+    material: 'Steel',
+    thickness: '500 mm depth',
+    images: [IMG.kitchenMoody, IMG.kitchenDark, IMG.drawerUnit],
+    bestseller: true,
+    featured: true,
+    rating: 4.9,
+    reviews: 322,
+    description:
+      'A concealed under-mount runner rated to 40 kg with full extension and synchronised soft close. Because the runner sits below the box, the drawer reads as a single clean volume from the front.',
+    specs: {
+      'Load Capacity': '40 kg',
+      Extension: 'Full extension',
+      Length: '500 mm',
+      Damping: 'Synchronised soft close',
+      Mounting: 'Concealed under-mount',
+      Adjustment: '4-way front adjustment',
+      'Cycle Test': '80,000 cycles',
+      Warranty: '10 Years',
+    },
+    applications: [
+      'Kitchen pot and pan drawers',
+      'Wardrobe internal drawers',
+      'Vanity storage',
+      'Retail and display casework',
+    ],
+  },
+  {
+    id: 'hw-slimbox',
+    code: 'VK 320',
+    name: 'Slim Drawer Box',
+    price: 2640,
+    mrp: 3550,
+    unit: 'per set',
+    finish: 'Suede Matt',
+    color: 'Graphite',
+    material: 'Powder Coated Steel',
+    thickness: '13 mm wall',
+    images: [IMG.kitchenDark, IMG.drawerUnit, IMG.kitchenWhite],
+    bestseller: true,
+    rating: 4.7,
+    reviews: 214,
+    description:
+      'A 13 mm double-wall steel side that gains you almost 40 mm of internal width over a plywood box. Supplied with a square rail option for tall drawers and a matt graphite coat that resists fingerprints.',
+    specs: {
+      'Side Height': '84 mm / 167 mm',
+      'Wall Thickness': '13 mm double wall',
+      'Load Capacity': '35 kg',
+      Extension: 'Full extension',
+      Damping: 'Soft close standard',
+      Finish: 'Matt graphite powder coat',
+      'Cycle Test': '60,000 cycles',
+      Warranty: '10 Years',
+    },
+    applications: [
+      'Kitchen cutlery and utility drawers',
+      'Wardrobe accessory drawers',
+      'Study and office storage',
+      'Bathroom vanity drawers',
+    ],
+  },
+  {
+    id: 'hw-basket',
+    code: 'VK 780',
+    name: 'Kitchen Pull-Out Basket',
+    price: 4350,
+    mrp: 5900,
+    unit: 'per unit',
+    finish: 'Brushed Metal',
+    color: 'Stainless',
+    material: 'SS 304 Stainless Steel',
+    thickness: '600 mm module',
+    images: [IMG.kitchenDetail, IMG.kitchenMoody, IMG.heroKitchen],
+    bestseller: true,
+    rating: 4.6,
+    reviews: 268,
+    description:
+      'SS 304 wire, electro-polished rather than chrome dipped, so it will not pit in an Indian kitchen. Runs on the same under-mount system as our tandem boxes and drops into a standard 600 mm carcass.',
+    specs: {
+      Material: 'SS 304, electro-polished',
+      'Module Width': '600 mm (450 / 900 available)',
+      'Load Capacity': '30 kg',
+      Extension: 'Full extension, soft close',
+      Configuration: 'Plain / cutlery / thali / bottle',
+      Corrosion: 'Salt spray tested 96 hours',
+      Mounting: 'Under-mount runner',
+      Warranty: '15 Years',
+    },
+    applications: [
+      'Kitchen base unit storage',
+      'Pantry and utility pull-outs',
+      'Bottle and detergent storage',
+      'Commercial kitchen casework',
+    ],
+  },
+  {
+    id: 'hw-lift',
+    code: 'FX 900',
+    name: 'Wardrobe Lift System',
+    price: 5280,
+    mrp: 7200,
+    unit: 'per set',
+    finish: 'Brushed Metal',
+    color: 'Aluminium',
+    material: 'Aluminium & Steel',
+    thickness: '830–1150 mm',
+    images: [IMG.bedroomWalnut, IMG.bedroomLight, IMG.livingGlass],
+    featured: true,
+    rating: 4.7,
+    reviews: 96,
+    description:
+      'A gas-assisted pull-down rail that brings a high hanging rod to shoulder height and returns it slowly under its own damping. Turns the dead 600 mm above every wardrobe into usable hanging space.',
+    specs: {
+      'Load Capacity': '12 kg',
+      'Adjustable Width': '830–1150 mm',
+      Mechanism: 'Twin gas spring, damped return',
+      Material: 'Anodised aluminium, steel arms',
+      'Cycle Test': '20,000 cycles',
+      Mounting: 'Side mount, 2 screws per arm',
+      Finish: 'Natural anodised',
+      Warranty: '5 Years',
+    },
+    applications: [
+      'Full-height wardrobe top sections',
+      'Loft and overhead storage',
+      'Hotel and serviced apartment joinery',
+      'Compact urban bedrooms',
+    ],
+  },
+  {
+    id: 'hw-channel',
+    code: 'FX 450',
+    name: 'Telescopic Drawer Channel',
+    price: 690,
+    mrp: 980,
+    unit: 'per pair',
+    finish: 'Brushed Metal',
+    color: 'Zinc',
+    material: 'Cold Rolled Steel',
+    thickness: '45 mm side',
+    images: [IMG.bathStone, IMG.drawerUnit, IMG.kitchenWhite],
+    rating: 4.5,
+    reviews: 342,
+    description:
+      'A ball-bearing telescopic channel with a 45 kg rating and a positive detent at full extension. The unglamorous part that decides whether a drawer still feels good in year seven.',
+    specs: {
+      'Load Capacity': '45 kg per pair',
+      Type: 'Ball bearing, telescopic',
+      Extension: 'Full extension',
+      Length: '450 mm (300–600 mm available)',
+      'Side Thickness': '45 mm',
+      Finish: 'Zinc plated',
+      'Cycle Test': '50,000 cycles',
+      Warranty: '5 Years',
+    },
+    applications: [
+      'Kitchen and wardrobe drawers',
+      'Office pedestals and filing',
+      'Retail counters',
+      'Modular furniture',
+    ],
+  },
+  {
+    id: 'hw-handle',
+    code: 'FX 120',
+    name: 'Recessed Cabinet Handle',
+    price: 460,
+    mrp: 640,
+    unit: 'per piece',
+    finish: 'Brushed Metal',
+    color: 'Bronze',
+    material: 'Solid Brass',
+    thickness: '160 mm CC',
+    images: [IMG.sideboardWood, IMG.vasesDark, IMG.facadeDark],
+    isNew: true,
+    featured: true,
+    rating: 4.8,
+    reviews: 158,
+    description:
+      'Solid brass with a hand-brushed face and a PVD lacquer that holds its colour in coastal humidity. The recessed profile sits flush against the shutter, so a run of drawers stays visually uninterrupted.',
+    specs: {
+      Material: 'Solid brass, PVD lacquered',
+      'Centre to Centre': '160 mm (96 / 128 / 224 available)',
+      Profile: 'Recessed edge pull',
+      Finish: 'Hand-brushed antique bronze',
+      Fixing: 'M4 bolts, supplied',
+      'Corrosion Test': '240 hours salt spray',
+      Weight: '186 g',
+      Warranty: '10 Years',
+    },
+    applications: [
+      'Kitchen drawer fronts',
+      'Wardrobe and dresser shutters',
+      'Bar units and consoles',
+      'Hospitality casework',
+    ],
+  },
+  {
+    id: 'hw-push',
+    code: 'FX 060',
+    name: 'Push-to-Open System',
+    price: 340,
+    mrp: 480,
+    unit: 'per piece',
+    finish: 'Suede Matt',
+    color: 'White',
+    material: 'Engineering Polymer',
+    thickness: '38 mm depth',
+    images: [IMG.kitchenWhite, IMG.heroKitchen, IMG.officeWhite],
+    rating: 4.4,
+    reviews: 187,
+    description:
+      'A magnetic push latch tuned to a 2 mm press, so shutters open on a deliberate touch and not when someone leans on them. The magnet holds the door shut without a separate catch — which is what makes handleless kitchens possible.',
+    specs: {
+      'Activation Travel': '2 mm',
+      'Holding Force': '3.5 kg magnetic',
+      Adjustment: '± 3 mm depth',
+      Material: 'Glass-filled polymer, steel plate',
+      Mounting: 'Carcass side or base',
+      'Cycle Test': '50,000 cycles',
+      Finish: 'Matt white / matt grey',
+      Warranty: '5 Years',
+    },
+    applications: [
+      'Handleless kitchen shutters',
+      'Wall unit and tall unit doors',
+      'Wardrobe shutters',
+      'Concealed storage panels',
+    ],
+  },
+].map((p) =>
+  build({
+    brand: p.code.startsWith('VK') ? 'VALKEN' : 'FERROLUX',
+    category: 'Hardware',
+    collection: 'Precision',
+    size: 'Standard',
+    care: [
+      'Wipe with a dry or lightly damp cloth only.',
+      'Do not use acidic, chlorine or ammonia-based cleaners.',
+      'Check and re-tighten mounting screws once a year.',
+      'Keep runners free of dust and grit for smooth travel.',
+    ],
+    ...p,
+  })
+)
+
+/**
+ * Application tags. The Kitchen and Wardrobe entry points in the navigation
+ * are not categories — they are use cases that cut across families, so they
+ * are expressed as tags and folded into the search index below.
+ */
+const TAGS = {
+  'sc-435': ['wardrobe', 'bedroom'],
+  'sc-418': ['kitchen'],
+  'sc-402': ['kitchen', 'office'],
+  'sc-509': ['wardrobe', 'kitchen'],
+  'sc-505': ['wardrobe', 'bedroom'],
+  'sc-508': ['kitchen', 'office'],
+  'sc-512': ['wardrobe', 'bedroom'],
+  'sc-521': ['wardrobe'],
+  'sc-530': ['wardrobe', 'bedroom'],
+  'sc-544': ['kitchen'],
+  'sc-556': ['kitchen'],
+  'sc-561': ['kitchen', 'office'],
+  'ply-710': ['kitchen'],
+  'ply-303': ['wardrobe', 'bedroom'],
+  'mdf-hd': ['kitchen', 'wardrobe'],
+  'ply-flexi': ['office'],
+  'ply-fr': ['office'],
+  'hw-hinge': ['kitchen', 'wardrobe'],
+  'hw-tandem': ['kitchen', 'wardrobe'],
+  'hw-slimbox': ['kitchen', 'wardrobe'],
+  'hw-basket': ['kitchen'],
+  'hw-lift': ['wardrobe'],
+  'hw-channel': ['kitchen', 'wardrobe', 'office'],
+  'hw-handle': ['kitchen', 'wardrobe'],
+  'hw-push': ['kitchen', 'wardrobe'],
+}
+
+export const products = [...laminates, ...boards, ...hardware].map((p) => ({
+  ...p,
+  tags: TAGS[p.id] ?? [],
+}))
+
+export const productById = Object.fromEntries(products.map((p) => [p.id, p]))
+
+/* ---------------- Derived filter facets ---------------- */
+const uniq = (key) => [...new Set(products.map((p) => p[key]))].sort()
+
+export const facets = {
+  category: ['Laminates', 'Plywood', 'MDF', 'Hardware'],
+  brand: uniq('brand'),
+  finish: uniq('finish'),
+  color: uniq('color'),
+  material: uniq('material'),
+  // Only board thicknesses are meaningful as a filter; hardware carries
+  // dimensional labels ("35 mm cup") that would clutter the panel.
+  thickness: uniq('thickness')
+    .filter((t) => /^\d+(\.\d+)? mm$/.test(t))
+    .sort((a, b) => parseFloat(a) - parseFloat(b)),
+  availability: ['In Stock', 'Made to Order'],
+}
+
+export const priceBounds = {
+  min: 0,
+  max: Math.ceil(Math.max(...products.map((p) => p.price)) / 500) * 500,
+}
+
+export const bestsellers = products.filter((p) => p.bestseller)
+export const featured = products.filter((p) => p.featured)
+export const newArrivals = products.filter((p) => p.isNew)
+
+export const relatedTo = (product, limit = 4) =>
+  products
+    .filter((p) => p.id !== product.id)
+    .sort((a, b) => {
+      const score = (x) =>
+        (x.category === product.category ? 2 : 0) +
+        (x.collection === product.collection ? 2 : 0) +
+        (x.finish === product.finish ? 1 : 0)
+      return score(b) - score(a)
+    })
+    .slice(0, limit)
+
+export const formatINR = (n) =>
+  '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 })

@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    /* `clip`, not `hidden`. `overflow-x: hidden` on BOTH the root and the
+       body makes the body its own scroll container, and Chrome then refuses
+       to scroll the page on wheel input. `clip` never creates a scroll
+       container, so it can't reintroduce that. */
+    overflow-x: clip;
+  }
+
+  /* Older engines without `overflow: clip` fall back to hidden on the body
+     alone — one element only, which is safe. */
+  @supports not (overflow: clip) {
+    html {
+      overflow-x: visible;
+    }
+    body {
+      overflow-x: hidden;
+    }
+  }
+
+  body {
+    @apply bg-paper text-char font-sans antialiased;
+    font-weight: 300;
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    background: #1c1a18;
+    color: #efe9df;
+  }
+
+  /* Scrollbar — thin and neutral */
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #efe9df;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c3bcb1;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8a8178;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  /* ---------- Typography scale ---------- */
+  .h-display {
+    @apply font-display font-light uppercase leading-[0.86] tracking-[-0.015em];
+    font-size: clamp(2.9rem, 9.2vw, 9.5rem);
+  }
+
+  .h-xl {
+    @apply font-display font-light uppercase leading-[0.9] tracking-[-0.01em];
+    font-size: clamp(2.1rem, 5.4vw, 5.2rem);
+  }
+
+  .h-lg {
+    @apply font-display font-light uppercase leading-[0.95];
+    font-size: clamp(1.6rem, 4.4vw, 3.25rem);
+  }
+
+  .h-md {
+    @apply font-display font-light leading-[1.05];
+    font-size: clamp(1.45rem, 2.6vw, 2.35rem);
+  }
+
+  .eyebrow {
+    @apply font-sans text-[10px] font-medium uppercase tracking-ultra text-stone md:text-[11px];
+  }
+
+  .body-lg {
+    @apply font-sans text-base font-light leading-relaxed text-graphite md:text-[17px];
+  }
+
+  .body-sm {
+    @apply font-sans text-[13px] font-light leading-relaxed text-stone md:text-sm;
+  }
+
+  /* ---------- Layout ---------- */
+  .shell {
+    @apply mx-auto w-full max-w-edge px-5 sm:px-8 lg:px-14 xl:px-20;
+  }
+
+  .shell-wide {
+    @apply mx-auto w-full max-w-edge px-0 sm:px-4 lg:px-8;
+  }
+
+  .rule {
+    @apply h-px w-full bg-char/10;
+  }
+
+  /* ---------- Links / underline sweep ---------- */
+  .link-sweep {
+    @apply relative inline-block;
+  }
+  .link-sweep::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current;
+    transition: transform 0.55s var(--ease-lux);
+  }
+  .link-sweep:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* ---------- Media ---------- */
+  .media {
+    @apply relative overflow-hidden bg-ivory;
+  }
+  .media img {
+    @apply h-full w-full object-cover;
+    transition: transform 1.2s var(--ease-lux), filter 0.9s var(--ease-lux);
+    will-change: transform;
+  }
+  .group:hover .media-zoom {
+    transform: scale(1.07);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .drag-none {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+  .snap-x-lux {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .snap-item {
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

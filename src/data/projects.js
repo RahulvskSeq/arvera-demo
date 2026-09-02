@@ -1,0 +1,148 @@
+import { IMG } from './images.js'
+
+export const projectCategories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Office']
+
+export const projects = [
+  {
+    id: 'bengaluru-residence',
+    name: 'Modern Bengaluru Residence',
+    location: 'Indiranagar, Bengaluru',
+    category: 'Residential',
+    year: '2024',
+    area: '4,200 sq ft',
+    architect: 'Studio Vaan',
+    image: IMG.villaPool,
+    gallery: [IMG.livingSlat, IMG.kitchenWhite, IMG.bedroomLight],
+    materials: ['SC 435 Natural Walnut', 'ARV 710 Marine Ply', 'VK 550 Tandem'],
+    summary:
+      'A four-bedroom home built around a central courtyard, where a single walnut tone runs from the entrance console through the kitchen island and into the primary wardrobe.',
+  },
+  {
+    id: 'mumbai-apartment',
+    name: 'Contemporary Mumbai Apartment',
+    location: 'Worli, Mumbai',
+    category: 'Residential',
+    year: '2024',
+    area: '2,650 sq ft',
+    architect: 'Kavi & Partners',
+    image: IMG.livingGlass,
+    gallery: [IMG.livingNeutral, IMG.kitchenDark, IMG.livingMirrors],
+    materials: ['SC 512 Linen White', 'SC 418 Calacatta', 'FX 060 Push-to-Open'],
+    summary:
+      'A sea-facing apartment kept deliberately handleless, so nothing interrupts the horizon line. Calacatta appears only twice — the island and the powder room.',
+  },
+  {
+    id: 'chennai-villa',
+    name: 'Luxury Chennai Villa',
+    location: 'ECR, Chennai',
+    category: 'Residential',
+    year: '2023',
+    area: '6,800 sq ft',
+    architect: 'Meridian Design Co.',
+    image: IMG.whitePool,
+    gallery: [IMG.livingFire, IMG.bedroomWalnut, IMG.houseGlass],
+    materials: ['SC 521 Terra Oak', 'ARV FR Plywood', 'FX 120 Bronze Handle'],
+    summary:
+      'Coastal humidity drove every specification here — fire-retardant cores, marine-grade ply throughout the wet areas, and PVD-lacquered brass that will not pit in salt air.',
+  },
+  {
+    id: 'hyderabad-office',
+    name: 'Premium Hyderabad Office',
+    location: 'HITEC City, Hyderabad',
+    category: 'Office',
+    year: '2024',
+    area: '18,000 sq ft',
+    architect: 'Form Atelier',
+    image: IMG.officeLoft,
+    gallery: [IMG.officeOpen, IMG.officeGreen, IMG.loungeWood],
+    materials: ['SC 508 Graphite Wood', 'ARV FR Plywood', 'ARV HDHMR'],
+    summary:
+      'A two-floor workplace where every vertical surface is graphite and every horizontal one is oak, so wayfinding happens through material rather than signage.',
+  },
+  {
+    id: 'boutique-hospitality',
+    name: 'Boutique Hospitality Space',
+    location: 'Panjim, Goa',
+    category: 'Hospitality',
+    year: '2023',
+    area: '11,400 sq ft',
+    architect: 'Atelier Sombra',
+    image: IMG.lounge,
+    gallery: [IMG.bedroomHotel, IMG.bedroomSuite, IMG.loungeWood],
+    materials: ['SC 561 Brushed Bronze', 'SC 556 Charcoal Slate', 'FX 120 Handle'],
+    summary:
+      'Twenty-two keys in a restored Portuguese townhouse. Bronze laminate on the lift lobby and bar back does the heavy lifting; the rooms stay almost entirely in plaster and oak.',
+  },
+  {
+    id: 'kochi-flagship',
+    name: 'Kochi Retail Flagship',
+    location: 'Marine Drive, Kochi',
+    category: 'Commercial',
+    year: '2024',
+    area: '7,300 sq ft',
+    architect: 'Northlight Studio',
+    image: IMG.houseModern,
+    gallery: [IMG.studio, IMG.arches, IMG.hallwayWhite],
+    materials: ['SC 505 Sandstone', 'ARV FLEXI Bending Ply', 'ARV HDHMR'],
+    summary:
+      'Every display plinth is a radiused form built on 8 mm bending ply, wrapped in a single sandstone tone so the merchandise carries all the colour in the room.',
+  },
+  {
+    id: 'pune-lounge',
+    name: 'Pune Corporate Lounge',
+    location: 'Kharadi, Pune',
+    category: 'Office',
+    year: '2023',
+    area: '5,100 sq ft',
+    architect: 'Bhatt Studio',
+    image: IMG.loungeWood,
+    gallery: [IMG.officeOpen, IMG.livingShelf, IMG.desk],
+    materials: ['SC 509 Smoked Oak', 'ARV 303 BWR Ply', 'VK 110 Hinge'],
+    summary:
+      'A café-first workplace lounge with 74 running feet of oak slat screening, detailed so the joints land on a 300 mm grid across the entire floor.',
+  },
+  {
+    id: 'delhi-penthouse',
+    name: 'Delhi Penthouse',
+    location: 'Golf Links, New Delhi',
+    category: 'Residential',
+    year: '2025',
+    area: '5,400 sq ft',
+    architect: 'Studio Ardh',
+    image: IMG.penthouse,
+    gallery: [IMG.livingArt, IMG.livingWhite, IMG.bedroomMoody],
+    materials: ['SC 544 Verde Marble', 'SC 435 Natural Walnut', 'FX 900 Lift'],
+    summary:
+      'Verde Alpi used exactly three times across 5,400 square feet — the bar, the powder room and a single console — against an otherwise unbroken walnut envelope.',
+  },
+  {
+    id: 'ahmedabad-studio',
+    name: 'Ahmedabad Retail Studio',
+    location: 'CG Road, Ahmedabad',
+    category: 'Commercial',
+    year: '2024',
+    area: '3,900 sq ft',
+    architect: 'Rann Collective',
+    image: IMG.houseNight,
+    gallery: [IMG.plasterWall, IMG.benchMinimal, IMG.potsStone],
+    materials: ['SC 402 Urban Concrete', 'ARV HDHMR', 'FX 450 Channel'],
+    summary:
+      'A concrete-toned shell with warm oak inserts, designed so the entire fit-out could be demounted and relocated within a weekend.',
+  },
+  {
+    id: 'goa-resort',
+    name: 'Goa Resort Villas',
+    location: 'Assagao, Goa',
+    category: 'Hospitality',
+    year: '2025',
+    area: '24,000 sq ft',
+    architect: 'Atelier Sombra',
+    image: IMG.bedroomHotel,
+    gallery: [IMG.bedroomSuite, IMG.villaPool, IMG.bathMarble],
+    materials: ['SC 556 Charcoal Slate', 'ARV 710 Marine Ply', 'VK 780 Basket'],
+    summary:
+      'Fourteen villas where the joinery had to survive an open-to-monsoon plan. Marine ply everywhere, slate laminate on every exposed face, and stainless internals throughout.',
+  },
+]
+
+export const projectById = Object.fromEntries(projects.map((p) => [p.id, p]))
