@@ -1,5 +1,7 @@
 # ARVÉRA — Materials That Define Spaces
 
+**Live demo: https://rahulvskseq.github.io/arvera-demo/**
+
 A premium client-presentation demo for a fictional Indian interior-materials
 brand: laminates, plywood, MDF, hardware, and kitchen & wardrobe fittings.
 
@@ -21,6 +23,25 @@ Then open http://localhost:5180
 ```bash
 npm run build && npm run preview
 ```
+
+## Deploying
+
+The site is hosted on GitHub Pages from the `gh-pages` branch. To publish an
+update after changing anything:
+
+```bash
+npm run deploy
+```
+
+That rebuilds and force-pushes `dist/` to `gh-pages`; the live URL refreshes
+within a minute or two.
+
+Because Pages serves the demo from a project sub-path, `vite.config.js` sets
+`base` to `/arvera-demo/` for production builds, the router reads its
+`basename` from `import.meta.env.BASE_URL`, and `scripts/postbuild.mjs`
+prerenders a real directory for every route so deep links return a genuine
+HTTP 200 rather than falling back to `404.html`. To host it somewhere else,
+change `base` in `vite.config.js` — nothing else needs touching.
 
 ## Stack
 
