@@ -303,7 +303,7 @@ export default function Shop() {
                 <div className="flex flex-col items-start gap-6 py-20">
                   <p className="h-md text-char">No materials match those filters.</p>
                   <p className="body-lg max-w-md">
-                    Try widening the price range, or clear the filters to see the full catalogue.
+                    Try a wider price range, or clear the filters to see the whole catalogue.
                   </p>
                   <Button variant="solid" size="sm" onClick={reset}>
                     Clear all filters

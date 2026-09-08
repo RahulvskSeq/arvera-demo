@@ -38,7 +38,7 @@ export default function Wishlist() {
                 <span className="grid h-14 w-14 place-items-center border border-char/15 text-stone">
                   <Heart size={20} strokeWidth={1.2} />
                 </span>
-                <p className="h-md mt-8 max-w-md text-char">Save what you like as you browse.</p>
+                <p className="h-md mt-8 max-w-md text-char">Save what catches your eye as you browse.</p>
                 <p className="body-lg mt-5 max-w-md">
                   Tap the heart on any product to keep it here — your list is stored on this device,
                   so it survives a refresh.

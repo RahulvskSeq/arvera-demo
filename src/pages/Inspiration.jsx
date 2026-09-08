@@ -110,7 +110,7 @@ export default function Inspiration() {
                   <JournalCard key={a.id} article={a} index={i} layout="row" />
                 ))}
                 {rest.length === 0 && (
-                  <p className="body-lg py-10">No further articles in this category yet.</p>
+                  <p className="body-lg py-10">No further articles in this category.</p>
                 )}
               </div>
             </div>
